@@ -43,3 +43,7 @@ next-env.d.ts
 # design assets (keep pngs local, upload html)
 design-assets/screens/
 
+# documentation (keep local)
+documentation/
+
+
