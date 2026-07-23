@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Worker Profile - WorkWala</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c6c4df",
+                    "background": "#fafaf5",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-container": "#ff6b00",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e3de",
+                    "primary": "#a04100",
+                    "inverse-surface": "#2f312e",
+                    "surface-dim": "#dadad5",
+                    "inverse-primary": "#ffb693",
+                    "on-primary-container": "#572000",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface": "#1a1c19",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f4ef",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-bright": "#fafaf5",
+                    "secondary-container": "#e2e0fc",
+                    "on-secondary-container": "#63627a",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb693",
+                    "tertiary": "#006e2f",
+                    "on-background": "#1a1c19",
+                    "secondary": "#5d5c74",
+                    "surface-container-high": "#e8e8e3",
+                    "tertiary-container": "#00b050",
+                    "on-tertiary-container": "#003a15",
+                    "secondary-fixed": "#e2e0fc",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-surface-variant": "#5a4136",
+                    "surface-container": "#eeeee9",
+                    "on-primary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container-highest": "#e3e3de",
+                    "inverse-on-surface": "#f1f1ec",
+                    "outline": "#8e7164",
+                    "outline-variant": "#e2bfb0",
+                    "surface": "#fafaf5",
+                    "surface-tint": "#a04100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#45455b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "3xl": "2rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "base-unit": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .bottom-sheet-transition {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e3e3de;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen overflow-hidden">
+<!-- Background: Dimmed Job Details Screen -->
+<div class="fixed inset-0 z-0 brightness-[0.4] transition-all duration-500 scale-105 blur-[2px]">
+<div class="max-w-md mx-auto h-full bg-surface-container-low p-margin-mobile flex flex-col gap-6">
+<header class="flex justify-between items-center py-4">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+<span class="font-headline-md text-on-surface">Job Details</span>
+<span class="material-symbols-outlined text-on-surface">share</span>
+</header>
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-headline-md text-on-surface">Plumbing Emergency</h2>
+<p class="text-on-surface-variant font-label-lg">Pipe Leakage - Kitchen</p>
+</div>
+<span class="bg-tertiary-container/20 text-on-tertiary-container px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider">Urgent</span>
+</div>
+<div class="flex items-center gap-2 mb-6 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-label-lg">Vasant Kunj, New Delhi</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="h-4 w-3/4 bg-surface-variant rounded"></div>
+<div class="h-4 w-full bg-surface-variant rounded"></div>
+<div class="h-4 w-5/6 bg-surface-variant rounded"></div>
+</div>
+</div>
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-outline-variant/30 flex-1">
+<h3 class="font-label-lg text-on-surface mb-4 uppercase text-xs tracking-widest">Active Bids</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-4 p-4 bg-surface-container rounded-2xl">
+<div class="w-12 h-12 bg-surface-variant rounded-full"></div>
+<div class="flex-1 space-y-2">
+<div class="h-3 w-1/2 bg-surface-variant rounded"></div>
+<div class="h-3 w-1/3 bg-surface-variant rounded"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Sheet Container -->
+<div class="fixed inset-x-0 bottom-0 z-50 flex flex-col items-center justify-end" id="bottom-sheet">
+<!-- Handle Area for dragging feel -->
+<div class="w-12 h-1.5 bg-surface-container-highest rounded-full mb-3 opacity-80"></div>
+<!-- The Sheet -->
+<div class="w-full max-w-md bg-white rounded-t-[32px] h-[75vh] shadow-[0_-12px_40px_rgba(0,0,0,0.2)] flex flex-col overflow-hidden bottom-sheet-transition">
+<!-- Content Scrollable Area -->
+<div class="flex-1 overflow-y-auto custom-scrollbar px-margin-mobile pt-8 pb-32">
+<!-- Profile Header -->
+<div class="flex flex-col items-center text-center mb-8">
+<div class="relative mb-4">
+<div class="w-[88px] h-[88px] p-1 bg-primary rounded-full">
+<img class="w-full h-full object-cover rounded-full border-4 border-white shadow-md" data-alt="A professional close-up portrait of a skilled blue-collar worker named Ramesh Kumar, wearing a clean work uniform, smiling confidently. The lighting is warm and natural, suggesting reliability and trustworthiness. The background is a soft-focus workshop setting, maintaining a bright and modern UI aesthetic consistent with the bold orange brand color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpu-GC8Z5KqcP2KM4yEQGBI1-aw7PxsgnFpwlRlJqYFHxQotPmhjFWYPLwhqlNFpzR9e5SOKtfu090ZevXIXKbqJ3mG5tUHpp51GkldX0ttDlfTNgTikEGSBJKdRR-t-31pSvTazQSZ8LP731LA-Jab75k9F2mUPEpyTnV0Nb8vQ2UvZmwgY4mexq1cmyeBJ2sxETidc9Edx6AW3xnC6Ufg8M55yeOuTPSy6QoIhjj6S4DNKZLfAoYHA"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-tertiary-container text-white p-1 rounded-full border-2 border-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] icon-fill">verified</span>
+</div>
+</div>
+<h1 class="text-headline-md font-headline-md text-on-surface">Ramesh Kumar</h1>
+<div class="flex items-center gap-2 mt-1">
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="material-symbols-outlined text-[18px] icon-fill">star</span>
+                            4.5
+                        </span>
+<span class="text-on-surface-variant/40">•</span>
+<span class="text-on-surface-variant font-label-lg">32 jobs completed</span>
+</div>
+</div>
+<!-- Skills Section -->
+<div class="mb-8">
+<h3 class="text-label-lg font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">handyman</span>
+                        Skills
+                    </h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-full text-label-lg border border-outline-variant/30">Plumbing</span>
+<span class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-full text-label-lg border border-outline-variant/30">Pipe Fitting</span>
+<span class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-full text-label-lg border border-outline-variant/30">Leak Repair</span>
+<span class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-full text-label-lg border border-outline-variant/30">Sanitary Installation</span>
+<span class="px-4 py-2 bg-surface-container text-on-surface-variant rounded-full text-label-lg border border-outline-variant/30">+2 More</span>
+</div>
+</div>
+<!-- Service Area -->
+<div class="mb-8">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-label-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                            Service Area
+                        </h3>
+<span class="text-primary text-label-sm font-bold">View Map</span>
+</div>
+<div class="w-full h-32 rounded-2xl overflow-hidden relative border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A stylized minimalist map view showing the Vasant Kunj area in New Delhi with a soft orange circular overlay indicating the service coverage zone. The map style is clean, high-contrast, and light-themed, matching the reliable and energetic brand personality of the WorkWala app." data-location="New Delhi, India" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDimbfuQtgSc8PCUzTyOHToCtE7Uxqhnng0ZJB-w5WU38w9ERI2if1KtzeQDunl9MTQbHcJDz8PyBNJYKNQZKCRGSceWc2DixuyS2Uom7ioa-K3NCUg4xWWrjhZ3Ocg8bj2yI-Utlwk5nEokvMFOr3NRrW3sMb_ahAGffhqgs61YIylMkeGkSLfy8PopZHvJoYf5QtP6mXslzjuuTFaThsp_wfDUUvG7TRn7rKgcQd_Dt9kLE3GLhkQlQ"/>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+</div>
+</div>
+<!-- Recent Reviews -->
+<div class="mb-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-label-lg font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">rate_review</span>
+                            Recent Reviews
+                        </h3>
+<span class="text-on-surface-variant text-label-sm">See All</span>
+</div>
+<div class="space-y-4">
+<!-- Review Card 1 -->
+<div class="bg-white p-4 rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-secondary">AM</div>
+<div>
+<p class="font-label-lg text-on-surface">Amit Mishra</p>
+<p class="text-[12px] text-on-surface-variant">2 days ago</p>
+</div>
+</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-label-lg leading-relaxed">
+                                Ramesh is very professional. He fixed the kitchen leak quickly and cleaned up after work. Highly recommended!
+                            </p>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-white p-4 rounded-2xl border border-outline-variant/30 shadow-sm opacity-80">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center font-bold text-secondary">SK</div>
+<div>
+<p class="font-label-lg text-on-surface">Sunita Kapoor</p>
+<p class="text-[12px] text-on-surface-variant">1 week ago</p>
+</div>
+</div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] icon-fill">star</span>
+<span class="material-symbols-outlined text-[16px] text-surface-variant icon-fill">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-label-lg leading-relaxed">
+                                Good work and arrived on time. The price was fair for the plumbing job.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action Buttons -->
+<div class="absolute bottom-0 left-0 right-0 p-margin-mobile bg-white/90 backdrop-blur-md border-t border-outline-variant/20 flex gap-4 items-center">
+<button class="flex-1 h-touch-target-min border-2 border-primary-container text-primary-container font-bold rounded-2xl flex items-center justify-center gap-2 active:scale-95 transition-transform hover:bg-primary-container/5">
+<span class="material-symbols-outlined">chat_bubble</span>
+                    Chat
+                </button>
+<button class="flex-[2] h-touch-target-min bg-primary-container text-white font-bold rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-primary-container/30 active:scale-95 transition-transform">
+                    Hire Ramesh
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Minimal Script for micro-interaction -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sheet = document.getElementById('bottom-sheet');
+            // Initial state: slightly lowered
+            sheet.style.transform = 'translateY(100%)';
+            
+            setTimeout(() => {
+                sheet.style.transition = 'transform 0.6s cubic-bezier(0.32, 0.72, 0, 1)';
+                sheet.style.transform = 'translateY(0)';
+            }, 100);
+
+            // Simple drag indicator visual feedback
+            const handle = sheet.querySelector('.w-12.h-1\\.5');
+            handle.addEventListener('click', () => {
+                sheet.style.transform = sheet.style.transform === 'translateY(40%)' ? 'translateY(0)' : 'translateY(40%)';
+            });
+        });
+    </script>
+</body></html>

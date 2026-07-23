@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WorkWala — Post a Job (Review)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Component Config -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-fixed-dim": "#c6c4df",
+            "background": "#fafaf5",
+            "on-tertiary-fixed": "#002109",
+            "primary-container": "#ff6b00",
+            "on-primary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#e3e3de",
+            "primary": "#a04100",
+            "inverse-surface": "#2f312e",
+            "surface-dim": "#dadad5",
+            "inverse-primary": "#ffb693",
+            "on-primary-container": "#572000",
+            "tertiary-fixed-dim": "#4ae176",
+            "tertiary-fixed": "#6bff8f",
+            "on-surface": "#1a1c19",
+            "on-error-container": "#93000a",
+            "surface-container-low": "#f4f4ef",
+            "on-primary-fixed-variant": "#7a3000",
+            "on-error": "#ffffff",
+            "primary-fixed": "#ffdbcc",
+            "surface-bright": "#fafaf5",
+            "secondary-container": "#e2e0fc",
+            "on-secondary-container": "#63627a",
+            "error": "#ba1a1a",
+            "primary-fixed-dim": "#ffb693",
+            "tertiary": "#006e2f",
+            "on-background": "#1a1c19",
+            "secondary": "#5d5c74",
+            "surface-container-high": "#e8e8e3",
+            "tertiary-container": "#00b050",
+            "on-tertiary-container": "#003a15",
+            "secondary-fixed": "#e2e0fc",
+            "on-secondary-fixed": "#1a1a2e",
+            "on-surface-variant": "#5a4136",
+            "surface-container": "#eeeee9",
+            "on-primary-fixed": "#351000",
+            "on-tertiary-fixed-variant": "#005321",
+            "surface-container-highest": "#e3e3de",
+            "inverse-on-surface": "#f1f1ec",
+            "outline": "#8e7164",
+            "outline-variant": "#e2bfb0",
+            "surface": "#fafaf5",
+            "surface-tint": "#a04100",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed-variant": "#45455b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-mobile": "20px",
+            "stack-md": "24px",
+            "stack-lg": "40px",
+            "gutter": "16px",
+            "touch-target-min": "56px",
+            "base-unit": "8px",
+            "margin-desktop": "40px",
+            "stack-sm": "12px"
+          },
+          "fontFamily": {
+            "label-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .step-active { background-color: #ff6b00; width: 32px; transition: width 0.3s ease; }
+    .custom-checkbox:checked { background-color: #ff6b00; border-color: #ff6b00; }
+    .glass-effect { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top Navigation Shell -->
+<header class="sticky top-0 z-50 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container shadow-md flex justify-between items-center w-full px-margin-mobile h-[64px]">
+<div class="flex items-center gap-4">
+<button class="hover:bg-primary-fixed-variant/10 p-2 rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<span class="text-headline-md font-headline-md font-bold">WorkWala</span>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly construction site manager wearing a white hard hat, shot in soft natural sunlight with a blurred urban construction background. The lighting is warm and high-quality, reflecting a trustworthy and reliable brand persona for the blue-collar sector. The style is clean, modern, and highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCECBvqNZjAPHUZxZQAqz52jTugC21ajOdUlJgCxsfm9u9JUstgTsRtkHdwfWyJjAop1zJHQ4TFWlu-SChlvVDF0qepjr7-THKzEP9xo2x9lWMo6oSs-ycQkzu0t9SH3GWH0AiRNtjJkyNVNCujABzxd4jWM_JwzazRWsFuVjdXDF7qeb7LrEhFnZw-3j1d6jpmsEh1GplB91b78zNzqBxHeSifpVHBrADSd4yxHoeoteYHFOUU1M-vkQ"/>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-margin-mobile py-stack-md">
+<!-- Step Indicator & Title -->
+<section class="mb-stack-md">
+<div class="flex items-center justify-between mb-4">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Review &amp; Confirm</h1>
+<span class="text-label-lg font-label-lg text-primary">Step 3 of 3</span>
+</div>
+<div class="flex gap-2 h-2 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-1/3 rounded-full"></div>
+<div class="h-full bg-primary-container w-1/3 rounded-full"></div>
+<div class="h-full bg-primary-container w-1/3 rounded-full"></div>
+</div>
+</section>
+<!-- Map Preview Asymmetric Layout -->
+<div class="relative w-full h-48 rounded-[24px] overflow-hidden mb-gutter shadow-sm border-4 border-white">
+<div class="absolute inset-0 bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist digital map interface showing a suburban neighborhood in Mumbai. The map uses a soft color palette of light greys and greens with a prominent orange location pin marking a specific worksite. Surrounding areas feature stylized landmarks and clear street names, emphasizing local accessibility and speed for worker navigation." data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6li2YOOYHSZY1G-zKK97vqZ8uSnf2Yv5hrpzNF19Lmbo5dn_N3DRL9cCoeGasyNqWzO_HxE_mdZ_2gsjsGCzJxADbLJIjYUeRO3-qT46Az7Uu-ojRqZ-Du1whV8zxm7zPNJc1pLodK21izQRX4MPMdJ-WCtJqZ62priv9H4r4K6-uWHQNwYn2RPe9nQn-rxJv9T-rH39mRryhfc8kXuq3LVDqnQIXdzYb6s0TwC4KHzF829aJqKH1vA"/>
+</div>
+<div class="absolute bottom-4 left-4 glass-effect px-4 py-2 rounded-xl shadow-lg border border-white/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-body-md" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="text-label-lg text-on-surface">Andheri East, Mumbai</span>
+</div>
+</div>
+</div>
+<!-- Summary Card -->
+<section class="bg-white rounded-[24px] p-6 shadow-[0_4px_12px_rgba(0,0,0,0.12)] border border-outline-variant/30 relative">
+<button class="absolute top-6 right-6 flex items-center gap-1 text-primary font-label-lg hover:underline active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">edit</span>
+        Edit
+      </button>
+<div class="flex items-start gap-4 mb-6">
+<div class="w-16 h-16 bg-primary-fixed rounded-2xl flex items-center justify-center text-3xl">
+          🧱
+        </div>
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Mason</h2>
+<p class="text-body-md text-on-surface-variant mt-1">Professional masonry for residential boundary wall construction. Materials provided on site.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8 border-t border-outline-variant/20 pt-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<span class="block text-label-sm text-secondary uppercase tracking-wider">Workers</span>
+<span class="text-label-lg text-on-surface">2 Positions Available</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center text-on-tertiary-container">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<span class="block text-label-sm text-secondary uppercase tracking-wider">Pay</span>
+<span class="text-label-lg text-on-surface font-bold text-primary">₹800 / day</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<span class="block text-label-sm text-secondary uppercase tracking-wider">Timing</span>
+<span class="text-label-lg text-on-surface">09:00 AM - 06:00 PM</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<span class="block text-label-sm text-secondary uppercase tracking-wider">Date</span>
+<span class="text-label-lg text-on-surface">Oct 24 - Oct 28, 2023</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Confirmation Area -->
+<section class="mt-stack-lg">
+<label class="flex items-center gap-4 cursor-pointer p-4 rounded-2xl hover:bg-surface-container transition-colors group h-touch-target-min">
+<div class="relative flex items-center">
+<input class="w-6 h-6 rounded-md border-2 border-outline text-primary-container focus:ring-primary-container/30 custom-checkbox transition-all" id="confirm-check" type="checkbox"/>
+</div>
+<span class="text-body-lg text-on-surface group-hover:text-primary transition-colors">I confirm the details are correct</span>
+</label>
+<div class="mt-stack-md flex flex-col gap-4">
+<button class="w-full h-touch-target-min bg-primary-container text-on-primary text-body-lg font-bold rounded-2xl shadow-lg hover:shadow-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 opacity-50 cursor-not-allowed" disabled="" id="post-job-btn">
+          Post Job
+          <span class="material-symbols-outlined">send</span>
+</button>
+<p class="text-center text-label-lg text-on-surface-variant flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">visibility</span>
+          Your job will be visible to workers within 5km
+        </p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Contextual Filtering: Active Tab set to "Post") -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-[72px] pb-safe border-t border-outline-variant/30 bg-surface dark:bg-surface-container-highest shadow-[0_-4px_12px_rgba(0,0,0,0.12)] rounded-t-xl md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all cursor-pointer">
+<span class="material-symbols-outlined">work</span>
+<span class="text-label-sm font-label-sm">Jobs</span>
+</div>
+<!-- Active Tab: Post -->
+<div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/20 rounded-full px-4 py-1 scale-90 transition-all duration-200 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="text-label-sm font-label-sm">Post</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all cursor-pointer">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+    // Simple state management for the Post Job button
+    const checkbox = document.getElementById('confirm-check');
+    const postBtn = document.getElementById('post-job-btn');
+
+    checkbox.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        postBtn.disabled = false;
+        postBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+        postBtn.classList.add('hover:bg-primary', 'active:scale-95');
+      } else {
+        postBtn.disabled = true;
+        postBtn.classList.add('opacity-50', 'cursor-not-allowed');
+        postBtn.classList.remove('hover:bg-primary', 'active:scale-95');
+      }
+    });
+
+    postBtn.addEventListener('click', () => {
+      if (!postBtn.disabled) {
+        // Success micro-interaction
+        postBtn.innerHTML = `
+          <svg class="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          Posting...
+        `;
+        setTimeout(() => {
+          postBtn.innerHTML = `Success! <span class="material-symbols-outlined">check_circle</span>`;
+          postBtn.classList.replace('bg-primary-container', 'bg-tertiary-container');
+        }, 1500);
+      }
+    });
+  </script>
+</body></html>

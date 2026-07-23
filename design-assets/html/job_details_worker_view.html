@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Details - WorkWala</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c6c4df",
+                    "background": "#fafaf5",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-container": "#ff6b00",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e3de",
+                    "primary": "#a04100",
+                    "inverse-surface": "#2f312e",
+                    "surface-dim": "#dadad5",
+                    "inverse-primary": "#ffb693",
+                    "on-primary-container": "#572000",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface": "#1a1c19",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f4ef",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-bright": "#fafaf5",
+                    "secondary-container": "#e2e0fc",
+                    "on-secondary-container": "#63627a",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb693",
+                    "tertiary": "#006e2f",
+                    "on-background": "#1a1c19",
+                    "secondary": "#5d5c74",
+                    "surface-container-high": "#e8e8e3",
+                    "tertiary-container": "#00b050",
+                    "on-tertiary-container": "#003a15",
+                    "secondary-fixed": "#e2e0fc",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-surface-variant": "#5a4136",
+                    "surface-container": "#eeeee9",
+                    "on-primary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container-highest": "#e3e3de",
+                    "inverse-on-surface": "#f1f1ec",
+                    "outline": "#8e7164",
+                    "outline-variant": "#e2bfb0",
+                    "surface": "#fafaf5",
+                    "surface-tint": "#a04100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#45455b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "base-unit": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fafaf5; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .shadow-level-1 { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); }
+        .shadow-level-2 { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); }
+        .safe-bottom { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+        .interest-sent { background-color: #00b050 !important; }
+    </style>
+</head>
+<body class="text-on-background min-h-screen">
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container shadow-md h-[64px] flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-4">
+<button class="hover:bg-primary-fixed-variant/10 p-2 rounded-full transition-transform active:scale-95 duration-150">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold">WorkWala</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a skilled Indian construction worker in his late 30s, wearing a clean reflective safety vest. He has a friendly and trustworthy expression, looking directly at the camera with a slight smile. The lighting is bright and natural, suggesting an outdoor work site with blurred urban architecture in the background, maintaining a high-quality, professional aesthetic for a job platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb9FX_XHW3J1hqE6abBOjQ4JWt4cKtsWKH1RMvPk4EyEGKNOf_r0t6ik_Yn3Fmmk-0Ya9hrwCUjvWq9bO2uMIbiXXPVLXID5umc-ojgNpjJIPoP3qSTG8HXVAYBoedbadvZNemo9LvtLxHT6pMtB9so8pFNmWON1oGsTeU89R-Dwew9BfCxI3dbZk-ex-dX9Dvp9noFHf6fefDQG-vzpjdR0mfAIUNKFRk3KY2nPiHD_7kZV0YRECiig"/>
+</div>
+</header>
+<main class="pt-[80px] px-margin-mobile safe-bottom max-w-2xl mx-auto space-y-stack-md">
+<!-- Hero Card -->
+<section class="bg-surface-container-lowest rounded-[24px] p-5 shadow-level-1 space-y-4">
+<div class="flex justify-between items-start">
+<span class="px-4 py-1 bg-primary-fixed text-on-primary-fixed text-label-sm font-label-sm rounded-full">Construction</span>
+<span class="px-3 py-1 bg-tertiary-container/20 text-tertiary text-label-sm font-label-sm font-bold rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span> Verified
+                </span>
+</div>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">Need 2 masons for boundary wall construction</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">
+                Looking for experienced masons for a 3-day project in Sector 45. Must have own basic tools and be punctual. Work involves brickwork and plastering.
+            </p>
+<!-- Info Grid -->
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Pay</p>
+<p class="text-label-lg font-label-lg text-on-surface">₹850/Day</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Workers</p>
+<p class="text-label-lg font-label-lg text-on-surface">2 Masons</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Timing</p>
+<p class="text-label-lg font-label-lg text-on-surface">09:00 - 18:00</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-secondary">Duration</p>
+<p class="text-label-lg font-label-lg text-on-surface">3 Days</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Map Section -->
+<section class="bg-surface-container-lowest rounded-[24px] overflow-hidden shadow-level-1">
+<div class="p-5 flex justify-between items-center">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-lg text-label-lg">Sector 45, Gurgaon</span>
+</div>
+<button class="text-primary text-label-sm font-label-sm font-bold">Open Maps</button>
+</div>
+<div class="h-48 w-full bg-surface-variant relative">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist digital map view of an urban residential neighborhood in Gurgaon, India. The map shows simplified street layouts with soft green park areas and grey building footprints. A prominent orange location pin with a subtle shadow is centered on a specific plot. The aesthetic is modern and clear, using a neutral color palette that matches the professional UI design." data-location="Gurgaon, Sector 45" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGBgSRrhVvnxrMpFVKH4gKzuHImDxXwR8p3RrtNo3PdzvRA8jQHGkd2sF2uCLQQpqTCMZVQ46CYkq5wF5CIMPF96ZX8jNjbYVjY1RwsXMLviN8GGK0P1Bd5fjYjGtn1QtjmT1VV01cb3mwIOKcgujFoZce6_-gjfZd3Ta5RCq79Z7p3kGQ9mmFINQfnWK-Y9lpdKr-fb_xKzjgXCpPsJxmguf6xMd6oJkMRfbmikGf_xh5-xVdtSMMSA"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
+<div class="w-6 h-6 bg-primary rounded-full border-2 border-on-primary"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Poster Section -->
+<section class="bg-surface-container-lowest rounded-[24px] p-5 shadow-level-1">
+<p class="text-label-sm font-label-sm text-secondary mb-4 uppercase tracking-wider">Posted By</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a reliable Indian contractor named Raj Sharma. He is in his mid-40s, wearing a polo shirt, with a warm and approachable smile. The background is a softly blurred modern office interior with warm wooden accents. The photo has high-end lighting and clear detail, conveying trust and experience for a job marketplace platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LdSThRyIRj4Fhg-h1J6wG9Qtl8pUlViJAPdQ6bh92o64wgugkczX9RbX4uTwfpxGKm_qpwPYedWQoCGsXF7HwRoH5XAUZeQ2DkEB1VKxmOAhQoLpIaYc3HQct8BQf3jW8VvQ5p-DL0CJMfwfyUv3TpmyHR1a02FguzZ_8VV0Shlp5EJ_mPFV4Kus43A7WalEv4fLilc4y2jdyvFB0x-xDY94_lsHFrErBEN7uGsthVCVSS7PtOIfBQ"/>
+</div>
+<div>
+<h3 class="text-label-lg font-label-lg text-on-surface">Raj Sharma</h3>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-lg text-label-lg">4.8</span>
+<span class="text-label-sm font-label-sm text-secondary-fixed-dim ml-1">(124 reviews)</span>
+</div>
+</div>
+</div>
+<button class="w-12 h-12 rounded-full border-2 border-outline-variant flex items-center justify-center text-primary hover:bg-primary-container/10 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Component (BottomNavBar) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-[72px] pb-safe border-t border-outline-variant/30 bg-surface dark:bg-surface-container-highest shadow-[0_-4px_12px_rgba(0,0,0,0.12)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/20 rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-label-sm font-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 px-4 py-1" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-sm font-label-sm">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 px-4 py-1" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 px-4 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Call to Action Footer -->
+<div class="fixed bottom-[72px] left-0 right-0 p-margin-mobile bg-gradient-to-t from-background via-background to-transparent pointer-events-none">
+<div class="max-w-2xl mx-auto pointer-events-auto">
+<button class="w-full h-touch-target-min bg-primary-container text-on-primary text-[18px] font-semibold rounded-[16px] shadow-level-2 transition-all active:scale-95 duration-150 flex items-center justify-center gap-2" id="interestBtn" onclick="toggleInterest()">
+<span class="material-symbols-outlined" id="btnIcon">handshake</span>
+<span id="btnText">Express Interest</span>
+</button>
+</div>
+</div>
+<script>
+        let interestSent = false;
+        function toggleInterest() {
+            const btn = document.getElementById('interestBtn');
+            const icon = document.getElementById('btnIcon');
+            const text = document.getElementById('btnText');
+            
+            if (!interestSent) {
+                // Success state
+                btn.classList.add('interest-sent');
+                btn.classList.remove('bg-primary-container');
+                icon.textContent = 'check_circle';
+                text.textContent = 'Interest Sent';
+                
+                // Add confetti or celebration effect here
+                interestSent = true;
+                
+                // Vibrate if supported
+                if ("vibrate" in navigator) {
+                    navigator.vibrate(100);
+                }
+            } else {
+                // Toggle back for demo purposes
+                btn.classList.remove('interest-sent');
+                btn.classList.add('bg-primary-container');
+                icon.textContent = 'handshake';
+                text.textContent = 'Express Interest';
+                interestSent = false;
+            }
+        }
+    </script>
+</body></html>

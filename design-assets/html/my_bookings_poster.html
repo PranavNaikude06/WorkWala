@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c6c4df",
+                    "background": "#fafaf5",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-container": "#ff6b00",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e3de",
+                    "primary": "#a04100",
+                    "inverse-surface": "#2f312e",
+                    "surface-dim": "#dadad5",
+                    "inverse-primary": "#ffb693",
+                    "on-primary-container": "#572000",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface": "#1a1c19",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f4ef",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-bright": "#fafaf5",
+                    "secondary-container": "#e2e0fc",
+                    "on-secondary-container": "#63627a",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb693",
+                    "tertiary": "#006e2f",
+                    "on-background": "#1a1c19",
+                    "secondary": "#5d5c74",
+                    "surface-container-high": "#e8e8e3",
+                    "tertiary-container": "#00b050",
+                    "on-tertiary-container": "#003a15",
+                    "secondary-fixed": "#e2e0fc",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-surface-variant": "#5a4136",
+                    "surface-container": "#eeeee9",
+                    "on-primary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container-highest": "#e3e3de",
+                    "inverse-on-surface": "#f1f1ec",
+                    "outline": "#8e7164",
+                    "outline-variant": "#e2bfb0",
+                    "surface": "#fafaf5",
+                    "surface-tint": "#a04100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#45455b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "base-unit": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fafaf5; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .active-tab-indicator {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background-color: #ff6b00;
+            border-radius: 4px 4px 0 0;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(0, 33, 105, 0.12);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="text-on-surface antialiased pb-24">
+<!-- Top App Bar -->
+<header class="bg-primary sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile h-[64px] shadow-md">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-primary cursor-pointer">menu</span>
+<h1 class="text-headline-md font-headline-md font-bold text-on-primary">WorkWala</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a reliable Indian construction supervisor wearing a clean white shirt, looking confident and friendly. The background is a softly blurred modern office interior with natural lighting, emphasizing the dignity of labor and professional service. High-quality digital photography with warm, approachable tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEYCpDx7ueZ_6mJ0zAzjywK9wvKmNLkUf4iwzSqpjQY24voNjHI3dR76177lAQlfzGGKBzDyHr2bp1EiIl4JpIj8r_w6FrOR2KY1H0jvFpJO_npOETy6kPgXBarLlCfrzGBYssNSySGVQAv8mR_RhnIO2alF-BUqhKoWVs1RVbg9dXf3rUDDMUA8nfdO6FwxIiseQqtry18kEEYZ0i9AyYiZODyPtInpySJc05r1oXXkyn0jefLM4JpQ"/>
+</div>
+</header>
+<main class="max-w-md mx-auto px-margin-mobile pt-stack-md">
+<!-- Header & Tabs -->
+<div class="mb-stack-md">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile mb-gutter">My Bookings</h2>
+<!-- Custom Tabs -->
+<div class="flex border-b border-outline-variant/30 overflow-x-auto hide-scrollbar -mx-margin-mobile px-margin-mobile">
+<button class="relative py-3 px-4 flex-shrink-0 text-label-lg font-label-lg text-primary transition-colors" id="tab-ongoing" onclick="switchTab('ongoing')">
+                    Ongoing (2)
+                    <div class="active-tab-indicator" id="indicator-ongoing"></div>
+</button>
+<button class="relative py-3 px-4 flex-shrink-0 text-label-lg font-label-lg text-on-surface-variant transition-colors" id="tab-completed" onclick="switchTab('completed')">
+                    Completed (5)
+                    <div class="active-tab-indicator hidden" id="indicator-completed"></div>
+</button>
+<button class="relative py-3 px-4 flex-shrink-0 text-label-lg font-label-lg text-on-surface-variant transition-colors" id="tab-cancelled" onclick="switchTab('cancelled')">
+                    Cancelled (1)
+                    <div class="active-tab-indicator hidden" id="indicator-cancelled"></div>
+</button>
+</div>
+</div>
+<!-- Content Area -->
+<div class="space-y-gutter" id="tab-content">
+<!-- Ongoing Section (Default) -->
+<div class="space-y-gutter" id="section-ongoing">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] card-shadow border-l-[6px] border-primary-container p-5 transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-body-lg font-bold text-on-surface leading-tight pr-4">🧱 Boundary wall construction</h3>
+<span class="bg-primary-fixed text-on-primary-fixed text-label-sm font-label-sm px-3 py-1 rounded-full">Ongoing</span>
+</div>
+<div class="flex items-center gap-stack-sm mb-6">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Close up face of a skilled mason worker wearing a safety vest and a hard hat, smiling warmly. Professional documentary style photography with warm golden hour lighting that feels authentic and trustworthy, set against a clean construction site background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW3UhNcNDF0WBopOh07v8I9L8wmfnGo-55HDucK3NNzWhZBO3jTR095V-GXJhJv0eqmEQUaYTxhA6DsdJw6AvPrH8Vr4vACDSFeNKEOkNdcmlIh_KsMXc18ASfhmhZAhJFeGdzkwuRHvfbOjg_MtOLKonYrnMtCm7o2T8e-f-dVu2qzkH5NcEaU2242hILW0mMuA8loAYl0mJIJwAog6VftxXdebAzQqomiHP3zS3hhea1QXCg5SvPVA"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Portrait of a young muscular laborer in a blue work shirt, looking focused and capable. The lighting is crisp and clear, highlighting the tactile texture of his work gear. Modern professional aesthetic for a high-end service platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAisMq8SDYIiWV4YTlximKsrt002DIHGalRVU7jq0a6Mx6OKmB1gFKxzE9Ns7fg1thWL0QNcmEZAn1jgvs9y716ULzTJTscSsYn65-Vjt1nJ5E8y2DOtF2uBInXQZjERiVsqTU_SgPYNmxj7Sg-ioaeV7S4JSZVpMsti4mN-ADk1dv6Ts9QLJ5krOTzlENYDCqvH71JYVbRW_cDjY727n3ISX190jxe4oP-ZoFSHFD5JHG3SodFT1pqSQ"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-secondary-container flex items-center justify-center text-label-sm font-bold text-on-secondary-container">
+                                +3
+                            </div>
+</div>
+<p class="text-body-md text-on-surface-variant">5 Workers Assigned</p>
+</div>
+<div class="flex justify-between items-center mb-6 py-3 border-y border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="text-body-md font-bold">₹12,400</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">Due: Oct 24</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="h-[56px] border-2 border-primary-container text-primary-container font-bold rounded-xl flex items-center justify-center gap-2 active:bg-primary-container/5 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+                            Chat
+                        </button>
+<button class="h-[56px] bg-primary-container text-on-primary font-bold rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all">
+<span class="material-symbols-outlined">check_circle</span>
+                            Mark Complete
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] card-shadow border-l-[6px] border-primary-container p-5 transition-transform active:scale-[0.98]">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-body-lg font-bold text-on-surface leading-tight pr-4">⚡ Apartment Rewiring</h3>
+<span class="bg-primary-fixed text-on-primary-fixed text-label-sm font-label-sm px-3 py-1 rounded-full">In Progress</span>
+</div>
+<div class="flex items-center gap-stack-sm mb-6">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Macro portrait of an experienced electrician with silver hair, wearing specialized protective eyewear and a grey work jacket. Sharp focus, clean studio-style lighting in an urban renovation setting. Professional and trustworthy mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEfmixvyR4CPxJbPhJfrLpbMHHnNABfnctkgVJqJ8iMe7G6KpzDTanV7Dq52mCdOHQQ8kDB7KhUG3uLbbXP6GtjT4OQLl5Fx6iIRFBJC4CTzaiGp9lYcCiYfFo5OM30iiYlXx5Bi40nooqHLJ8x6kHhN3TRMf2Z6Kbiwn315fQBc8LUFJgLc5ghSKP-syOKsCKPDak-5Fyx3PjAeNyLmyStg7_Rd6PScHs0eI4h3scmaACg7kuKNpXCg"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-secondary-container flex items-center justify-center text-label-sm font-bold text-on-secondary-container">
+                                +1
+                            </div>
+</div>
+<p class="text-body-md text-on-surface-variant">2 Workers Assigned</p>
+</div>
+<div class="flex justify-between items-center mb-6 py-3 border-y border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="text-body-md font-bold">₹4,500</span>
+</div>
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-sm">Due: Oct 20</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="h-[56px] border-2 border-primary-container text-primary-container font-bold rounded-xl flex items-center justify-center gap-2 active:bg-primary-container/5 transition-colors">
+<span class="material-symbols-outlined">chat</span>
+                            Chat
+                        </button>
+<button class="h-[56px] bg-primary-container text-on-primary font-bold rounded-xl flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all">
+<span class="material-symbols-outlined">check_circle</span>
+                            Mark Complete
+                        </button>
+</div>
+</div>
+</div>
+<!-- Completed Section (Hidden by default) -->
+<div class="hidden space-y-gutter" id="section-completed">
+<div class="bg-surface-container-lowest rounded-[24px] card-shadow border-l-[6px] border-tertiary-container p-5">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-body-lg font-bold text-on-surface leading-tight pr-4">🏠 Exterior Painting</h3>
+<span class="bg-tertiary-container/20 text-on-tertiary-container text-label-sm font-label-sm px-3 py-1 rounded-full">Completed</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<span class="text-body-md text-on-surface-variant">Paid ₹8,000</span>
+</div>
+<button class="text-primary font-bold text-label-lg">View Invoice</button>
+</div>
+</div>
+<!-- Repeat for more... -->
+</div>
+<!-- Cancelled Section (Hidden by default) -->
+<div class="hidden space-y-gutter" id="section-cancelled">
+<div class="bg-surface-container-lowest rounded-[24px] card-shadow border-l-[6px] border-error p-5">
+<div class="flex justify-between items-start mb-4">
+<h3 class="text-body-lg font-bold text-on-surface leading-tight pr-4">🚰 Pipe Leakage Repair</h3>
+<span class="bg-error-container text-on-error-container text-label-sm font-label-sm px-3 py-1 rounded-full">Cancelled</span>
+</div>
+<div class="p-4 bg-error-container/10 rounded-xl mb-4">
+<p class="text-label-sm text-error font-medium">Reason: Provider unavailable for the selected slot.</p>
+</div>
+<button class="w-full h-[56px] bg-primary-container text-on-primary font-bold rounded-xl active:scale-95 transition-all">Rebook Service</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-[72px] pb-safe border-t border-outline-variant/30 bg-surface dark:bg-surface-container-highest shadow-[0_-4px_12px_rgba(0,0,0,0.12)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/20 rounded-full px-4 py-1 scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">work</span>
+<span class="text-label-sm font-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-sm font-label-sm">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1 relative" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+<span class="absolute top-1 right-3 w-2 h-2 bg-primary-container rounded-full"></span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        function switchTab(tabName) {
+            // Sections
+            const sections = ['ongoing', 'completed', 'cancelled'];
+            sections.forEach(s => {
+                document.getElementById(`section-${s}`).classList.add('hidden');
+                document.getElementById(`tab-${s}`).classList.remove('text-primary');
+                document.getElementById(`tab-${s}`).classList.add('text-on-surface-variant');
+                document.getElementById(`indicator-${s}`).classList.add('hidden');
+            });
+
+            // Show active
+            document.getElementById(`section-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tab-${tabName}`).classList.add('text-primary');
+            document.getElementById(`tab-${tabName}`).classList.remove('text-on-surface-variant');
+            document.getElementById(`indicator-${tabName}`).classList.remove('hidden');
+
+            // Optional: Simple scroll into view if tabs overflow
+            document.getElementById(`tab-${tabName}`).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // Floating Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('touchend', function() {
+                this.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c6c4df",
+                        "background": "#fafaf5",
+                        "on-tertiary-fixed": "#002109",
+                        "primary-container": "#ff6b00",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e3e3de",
+                        "primary": "#a04100",
+                        "inverse-surface": "#2f312e",
+                        "surface-dim": "#dadad5",
+                        "inverse-primary": "#ffb693",
+                        "on-primary-container": "#572000",
+                        "tertiary-fixed-dim": "#4ae176",
+                        "tertiary-fixed": "#6bff8f",
+                        "on-surface": "#1a1c19",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f4f4ef",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdbcc",
+                        "surface-bright": "#fafaf5",
+                        "secondary-container": "#e2e0fc",
+                        "on-secondary-container": "#63627a",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#ffb693",
+                        "tertiary": "#006e2f",
+                        "on-background": "#1a1c19",
+                        "secondary": "#5d5c74",
+                        "surface-container-high": "#e8e8e3",
+                        "tertiary-container": "#00b050",
+                        "on-tertiary-container": "#003a15",
+                        "secondary-fixed": "#e2e0fc",
+                        "on-secondary-fixed": "#1a1a2e",
+                        "on-surface-variant": "#5a4136",
+                        "surface-container": "#eeeee9",
+                        "on-primary-fixed": "#351000",
+                        "on-tertiary-fixed-variant": "#005321",
+                        "surface-container-highest": "#e3e3de",
+                        "inverse-on-surface": "#f1f1ec",
+                        "outline": "#8e7164",
+                        "outline-variant": "#e2bfb0",
+                        "surface": "#fafaf5",
+                        "surface-tint": "#a04100",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#45455b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "stack-md": "24px",
+                        "stack-lg": "40px",
+                        "gutter": "16px",
+                        "touch-target-min": "56px",
+                        "base-unit": "8px",
+                        "margin-desktop": "40px",
+                        "stack-sm": "12px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .notification-card {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .notification-card:active {
+            transform: scale(0.98);
+        }
+        .unread-border {
+            border-left: 4px solid #ff6b00;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-[80px]">
+<!-- Header Section -->
+<header class="bg-primary-container dark:bg-primary-container docked full-width top-0 z-40 shadow-md">
+<div class="flex justify-between items-center w-full px-margin-mobile h-[64px]">
+<div class="flex items-center gap-4">
+<button class="text-on-primary hover:bg-primary-fixed-variant/10 p-2 rounded-full transition-transform active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-headline-md font-headline-md font-bold text-on-primary">Notifications</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-label-lg font-label-lg text-on-primary/90 hover:underline">Mark all read</button>
+<div class="w-10 h-10 rounded-full border-2 border-on-primary/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-quality studio portrait of a professional Indian skilled worker wearing a clean uniform, smiling confidently at the camera. The lighting is warm and cinematic, highlighting their friendly and trustworthy expression. The background is a soft-focus workshop setting with warm wood tones and professional lighting, maintaining a clean and premium look for a profile photo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQPx81QtfPMod7N31ReKFALB1VQY4rAXP457Hv132o65mr3KzRmOAmbUapBxTiE94XhX09VOixt_JWflQA5d9IIEjbMSY2XstUWzgE-WdOLDEzFzgYA8GhqvgUALOGMqY7bhlFpqFxQW0gBQKbUTq_s5iAfH37TGIK8RfhFai4hQEd0ut0NhdZrM6wcM7uKEH-XPcSLhPXa9EMjQuOprZ2Z051-vB8ng_SaIsTFBlGn7AJEL7ZVYLUkA"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-margin-mobile py-stack-md">
+<!-- Section: Today -->
+<section class="mb-stack-lg">
+<h2 class="text-label-lg font-label-lg text-on-surface-variant mb-gutter uppercase tracking-wider">Today</h2>
+<div class="space-y-gutter">
+<!-- Unread Notification -->
+<div class="notification-card unread-border bg-white rounded-xl p-gutter flex items-start gap-gutter cursor-pointer">
+<div class="bg-primary-container/10 p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-primary-container fill-icon">person_search</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-body-lg text-on-surface leading-tight">Ramesh K. expressed interest</h3>
+<span class="text-label-sm font-label-sm text-primary-container whitespace-nowrap ml-2">2m ago</span>
+</div>
+<p class="text-on-surface-variant text-body-md mt-1">He is interested in your 'Site Supervisor' vacancy at Malad West.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant self-center">chevron_right</span>
+</div>
+<!-- Unread Notification -->
+<div class="notification-card unread-border bg-white rounded-xl p-gutter flex items-start gap-gutter cursor-pointer">
+<div class="bg-tertiary-container/10 p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-tertiary fill-icon">payments</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-body-lg text-on-surface leading-tight">Payment Received</h3>
+<span class="text-label-sm font-label-sm text-primary-container whitespace-nowrap ml-2">1h ago</span>
+</div>
+<p class="text-on-surface-variant text-body-md mt-1">₹4,500 has been credited to your WorkWala wallet for the Borivali Project.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant self-center">chevron_right</span>
+</div>
+<!-- Read Notification -->
+<div class="notification-card bg-surface-container-low rounded-xl p-gutter flex items-start gap-gutter cursor-pointer">
+<div class="bg-secondary-container/30 p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">work</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-medium text-body-lg text-on-surface leading-tight">New Job Suggestion</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant whitespace-nowrap ml-2">4h ago</span>
+</div>
+<p class="text-on-surface-variant text-body-md mt-1">A new 'Electrician' post matches your skills in Thane area.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant self-center">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Section: Yesterday -->
+<section class="mb-stack-lg">
+<h2 class="text-label-lg font-label-lg text-on-surface-variant mb-gutter uppercase tracking-wider">Yesterday</h2>
+<div class="space-y-gutter">
+<!-- Read Notification -->
+<div class="notification-card bg-surface-container-low rounded-xl p-gutter flex items-start gap-gutter cursor-pointer">
+<div class="bg-primary-container/5 p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">verified</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-medium text-body-lg text-on-surface leading-tight">Profile Verified</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant whitespace-nowrap ml-2">Yesterday</span>
+</div>
+<p class="text-on-surface-variant text-body-md mt-1">Your documents have been successfully verified. You are now a 'Verified Professional'.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant self-center">chevron_right</span>
+</div>
+<!-- Bento Style Insight Card (High-end UI Pattern) -->
+<div class="bg-secondary-fixed text-on-secondary-fixed rounded-[24px] p-6 relative overflow-hidden group cursor-pointer transition-all hover:shadow-lg border border-secondary-container">
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary-container fill-icon">trending_up</span>
+<span class="text-label-sm font-bold uppercase tracking-widest">Weekly Recap</span>
+</div>
+<h3 class="text-headline-md font-bold mb-4">Your Profile was viewed 142 times this week!</h3>
+<p class="text-body-md text-on-secondary-fixed-variant opacity-90 mb-6">That's 40% more than last week. Update your skills to stay ahead.</p>
+<button class="w-fit px-6 py-3 bg-primary-container text-on-primary rounded-full font-bold text-label-lg active:scale-95 transition-transform">
+                            View Stats
+                        </button>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute -right-8 -bottom-8 w-40 h-40 bg-primary-container/10 rounded-full blur-3xl group-hover:bg-primary-container/20 transition-all"></div>
+</div>
+<!-- Read Notification -->
+<div class="notification-card bg-surface-container-low rounded-xl p-gutter flex items-start gap-gutter cursor-pointer">
+<div class="bg-secondary-container/30 p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined text-secondary">chat</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-medium text-body-lg text-on-surface leading-tight">Message from Suman L.</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant whitespace-nowrap ml-2">Yesterday</span>
+</div>
+<p class="text-on-surface-variant text-body-md mt-1">"When can you start the wiring work for the new office?"</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant self-center">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 h-[72px] pb-safe border-t border-outline-variant/30 bg-surface dark:bg-surface-container-highest shadow-[0_-4px_12px_rgba(0,0,0,0.12)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all py-1 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all py-1 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="work">work</span>
+<span class="text-label-sm font-label-sm mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all py-1 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-label-sm font-label-sm mt-1">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/20 rounded-full px-4 py-1 active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined fill-icon" data-icon="chat">chat</span>
+<span class="text-label-sm font-label-sm mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all py-1 px-4" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Mark all as read effect
+        document.querySelector('button.text-on-primary/90').addEventListener('click', function() {
+            const unreadBorders = document.querySelectorAll('.unread-border');
+            unreadBorders.forEach(el => {
+                el.classList.add('transition-all', 'duration-500', 'opacity-50');
+                setTimeout(() => {
+                    el.classList.remove('unread-border', 'opacity-50');
+                    el.classList.add('bg-surface-container-low');
+                    el.querySelector('.text-primary-container')?.classList.replace('text-primary-container', 'text-on-surface-variant');
+                }, 500);
+            });
+            this.textContent = 'All Caught Up!';
+            this.style.pointerEvents = 'none';
+        });
+
+        // Add visual ripple-like effect on notification click
+        document.querySelectorAll('.notification-card').forEach(card => {
+            card.addEventListener('mousedown', function(e) {
+                const rect = this.getBoundingClientRect();
+                const ripple = document.createElement('div');
+                ripple.className = 'absolute bg-primary-container/10 rounded-full pointer-events-none transition-all duration-300 transform scale-0';
+                ripple.style.width = ripple.style.height = Math.max(rect.width, rect.height) + 'px';
+                ripple.style.left = e.clientX - rect.left - (parseInt(ripple.style.width)/2) + 'px';
+                ripple.style.top = e.clientY - rect.top - (parseInt(ripple.style.height)/2) + 'px';
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                setTimeout(() => {
+                    ripple.style.transform = 'scale(2)';
+                    ripple.style.opacity = '0';
+                }, 0);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+    </script>
+</body></html>

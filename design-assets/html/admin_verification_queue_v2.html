@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WorkWala Admin Dashboard — Worker Verification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c6c4df",
+                    "background": "#fafaf5",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-container": "#ff6b00",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e3de",
+                    "primary": "#a04100",
+                    "inverse-surface": "#2f312e",
+                    "surface-dim": "#dadad5",
+                    "inverse-primary": "#ffb693",
+                    "on-primary-container": "#572000",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface": "#1a1c19",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f4ef",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-bright": "#fafaf5",
+                    "secondary-container": "#e2e0fc",
+                    "on-secondary-container": "#63627a",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb693",
+                    "tertiary": "#006e2f",
+                    "on-background": "#1a1c19",
+                    "secondary": "#5d5c74",
+                    "surface-container-high": "#e8e8e3",
+                    "tertiary-container": "#00b050",
+                    "on-tertiary-container": "#003a15",
+                    "secondary-fixed": "#e2e0fc",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-surface-variant": "#5a4136",
+                    "surface-container": "#eeeee9",
+                    "on-primary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container-highest": "#e3e3de",
+                    "inverse-on-surface": "#f1f1ec",
+                    "outline": "#8e7164",
+                    "outline-variant": "#e2bfb0",
+                    "surface": "#fafaf5",
+                    "surface-tint": "#a04100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#45455b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "base-unit": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            position: relative;
+        }
+        .active-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ff6b00;
+            border-radius: 9999px;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- Top Navigation Anchor -->
+<header class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container shadow-md flex justify-between items-center w-full px-margin-mobile h-[64px] fixed top-0 z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-primary">menu</span>
+<h1 class="text-headline-md font-headline-md font-bold text-on-primary dark:text-on-primary-container">WorkWala Admin</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6">
+<span class="text-label-lg font-label-lg text-on-primary font-bold">Dashboard</span>
+<span class="text-label-lg font-label-lg text-on-primary/80 hover:bg-primary-fixed-variant/10 cursor-pointer">Logs</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior administrator in a high-end corporate setting. The person has a confident expression and is wearing a crisp white shirt. The background is a blurred office interior with soft, professional lighting. The overall color palette is warm and natural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzEv9jvEW3mQ_Uc0Kc5rk3lCz-7cIkBCaZU3vZtddjHhFn_Qt8RilEmoOgo5DiAFERPWyJaoHBmfs-5Eax8sst05_lxuhoQUAHjjMRLmgcbB2gbQ0j-ySUQZSE0D_hCUIg0Mwy92twHyoN_3QBf_9O7X_6DcxN1Q5XEfiX0OSx-TvDzLQsOehGnr3m0hg-cJkY1thqioyRPfdeE2ACs-kLZyvaD4mUodUjb9sD2kW1gnNJvRp5VpZFRw"/>
+</div>
+</div>
+</header>
+<main class="pt-[88px] px-margin-mobile max-w-5xl mx-auto">
+<!-- Top Statistics/Badges -->
+<section class="flex flex-wrap gap-3 mb-stack-md">
+<div class="bg-surface-container border border-outline-variant/30 flex items-center gap-2 px-4 py-2 rounded-full card-shadow">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Approved Today: <strong class="text-on-surface">42</strong></span>
+</div>
+<div class="bg-surface-container border border-outline-variant/30 flex items-center gap-2 px-4 py-2 rounded-full card-shadow">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Pending Requests: <strong class="text-on-surface">128</strong></span>
+</div>
+<div class="bg-surface-container border border-outline-variant/30 flex items-center gap-2 px-4 py-2 rounded-full card-shadow">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Rejections: <strong class="text-on-surface">14</strong></span>
+</div>
+</section>
+<!-- Admin Title and Tabs -->
+<div class="mb-stack-md">
+<h2 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg text-on-surface mb-stack-sm">Admin Panel</h2>
+<div class="flex gap-6 border-b border-outline-variant/30 overflow-x-auto whitespace-nowrap scrollbar-hide">
+<button class="active-tab text-label-lg font-label-lg text-primary-container pb-3 px-1 transition-all">Verification Queue (8)</button>
+<button class="text-label-lg font-label-lg text-on-surface-variant/70 pb-3 px-1 hover:text-on-surface transition-all">Reported Content</button>
+<button class="text-label-lg font-label-lg text-on-surface-variant/70 pb-3 px-1 hover:text-on-surface transition-all">Metrics</button>
+</div>
+</div>
+<!-- Verification Queue Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Worker Card: Suresh Patil -->
+<div class="bg-surface card-shadow rounded-[24px] p-5 flex flex-col gap-4 border border-outline-variant/10 relative overflow-hidden group">
+<!-- Status Pill -->
+<div class="absolute top-4 right-4 bg-primary-container/10 text-on-primary-fixed-variant px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="text-[14px]">⏳</span>
+<span class="text-label-sm font-label-sm">Pending</span>
+</div>
+<div class="flex gap-4 items-start">
+<div class="relative">
+<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A portrait of an Indian male worker named Suresh Patil, with a warm and honest expression. He is wearing a simple denim shirt suitable for blue-collar work. The lighting is soft and natural, emphasizing trust and reliability. The style is professional yet approachable with a neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZMuJn41FjfZiwCHS_Ef_b0DzVFvELdWn8MnTMMf9gk0NAz7RJ6VNzC8Tftzy0Can8tr9GYw_FqBOXB_h-m8SNar-JosAKR_5MIOJ75-xuDvKqfHo7ZkMNfAfz-r0FmhY875mgG27ldvI9xI-crEUdK2M_pGS5PUqOXvLt5-mvYyXDnsw2lRaxIfLu1aV0ThJfJSERchs63mq0pP4WiXEP_DvudpPJ8iHzEBceb_Kj9Zu_30zXztKA9A"/>
+</div>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface">Suresh Patil</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Mumbai, MH
+                        </p>
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wider">Electrician</span>
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wider">Welder</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<span class="text-body-md font-body-md text-on-surface">Government ID Attached</span>
+</div>
+<a class="text-primary font-bold text-label-lg hover:underline transition-all" href="#">View ID</a>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+<button class="h-touch-target-min bg-tertiary-container text-on-tertiary-container font-bold text-label-lg rounded-xl shadow-sm active:scale-95 transition-transform hover:brightness-105">Approve</button>
+<button class="h-touch-target-min bg-error text-on-error font-bold text-label-lg rounded-xl shadow-sm active:scale-95 transition-transform hover:brightness-110">Reject</button>
+<button class="h-touch-target-min border-2 border-primary-container text-primary-container font-bold text-label-lg rounded-xl active:scale-95 transition-transform hover:bg-primary-container/5">Request Info</button>
+</div>
+</div>
+<!-- Worker Card: Anjali Devi -->
+<div class="bg-surface card-shadow rounded-[24px] p-5 flex flex-col gap-4 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-4 right-4 bg-primary-container/10 text-on-primary-fixed-variant px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="text-[14px]">⏳</span>
+<span class="text-label-sm font-label-sm">Pending</span>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A portrait of a hardworking Indian woman named Anjali Devi, dressed in modest traditional attire suitable for domestic work. She has a gentle and trustworthy smile. The background is a clean, softly lit domestic setting. The image is captured with high-quality photographic detail, projecting professional integrity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn0-s44ezZ3ZyM3r_CA3HJNYe4_JTRb6yInViecOY2C8nq6c-EMQ4TUZCsTZZCMTzKaSwPj7JEw7gg-OUHV25Dx_n82Ir0px4qqV64UlGp2upd2REXvgeB1rNtV_8r4zP6wZ08arIbdVA6mioSCZm20JQv7H-L8mxtNWwEHFuEsv_wqWbL3-fNpEHBrLlK52jXcOKZSUW4neqLGPixpR1xuKzLltkxlUnwEhCdbTD_Iqw1-C5fItU4_w"/>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface">Anjali Devi</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Pune, MH
+                        </p>
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wider">Housekeeping</span>
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wider">Chef</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<span class="text-body-md font-body-md text-on-surface">Aadhar Card Verification</span>
+</div>
+<a class="text-primary font-bold text-label-lg hover:underline transition-all" href="#">View ID</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+<button class="h-touch-target-min bg-tertiary-container text-on-tertiary-container font-bold text-label-lg rounded-xl shadow-sm active:scale-95 transition-transform hover:brightness-105">Approve</button>
+<button class="h-touch-target-min bg-error text-on-error font-bold text-label-lg rounded-xl shadow-sm active:scale-95 transition-transform hover:brightness-110">Reject</button>
+<button class="h-touch-target-min border-2 border-primary-container text-primary-container font-bold text-label-lg rounded-xl active:scale-95 transition-transform hover:bg-primary-container/5">Request Info</button>
+</div>
+</div>
+<!-- Worker Card: Rahul Verma -->
+<div class="bg-surface card-shadow rounded-[24px] p-5 flex flex-col gap-4 border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute top-4 right-4 bg-primary-container/10 text-on-primary-fixed-variant px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="text-[14px]">⏳</span>
+<span class="text-label-sm font-label-sm">Pending</span>
+</div>
+<div class="flex gap-4 items-start">
+<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A portrait of a young Indian male worker named Rahul Verma, wearing a clean orange polo shirt. He looks determined and professional. The image has a clean, minimalist studio background with soft directional lighting. The aesthetic is modern, bold, and high-contrast, fitting a mobile-first job platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdNpwVgw3JIq-lBqQA3EMM5uuOTWmErUMdo_iT23RDthpSLXDpw_y9SKQ9VF_1kAPJsuZSkaJYjC88GDo_7Q0X0XNUT2KzXT7DIspb0oB6CNEd25i6h4fOc-w_6ZjcCiFwEwTD9QEofX6q3yqDmwhtVaa6wE2z5Yb6qAVlLr2eSVPNtLzeB4-SRPsvZo4AkZpQx8Zb2iXMc7GjmBdtsXoCJeg2WPIgx1upn-qKgQi3hW-fF-74IsW_Ow"/>
+</div>
+<div class="flex-1">
+<h3 class="text-headline-md font-headline-md text-on-surface">Rahul Verma</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Delhi, NCR
+                        </p>
+<div class="mt-2 flex flex-wrap gap-1.5">
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wider">Delivery</span>
+<span class="bg-secondary-container text-on-secondary-container text-[11px] font-semibold px-2 py-0.5 rounded-md uppercase tracking-wider">Driver</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3 flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">badge</span>
+<span class="text-body-md font-body-md text-on-surface">DL &amp; PAN Attached</span>
+</div>
+<a class="text-primary font-bold text-label-lg hover:underline transition-all" href="#">View ID</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-2">
+<button class="h-touch-target-min bg-tertiary-container text-on-tertiary-container font-bold text-label-lg rounded-xl shadow-sm active:scale-95 transition-transform hover:brightness-105">Approve</button>
+<button class="h-touch-target-min bg-error text-on-error font-bold text-label-lg rounded-xl shadow-sm active:scale-95 transition-transform hover:brightness-110">Reject</button>
+<button class="h-touch-target-min border-2 border-primary-container text-primary-container font-bold text-label-lg rounded-xl active:scale-95 transition-transform hover:bg-primary-container/5">Request Info</button>
+</div>
+</div>
+<!-- Empty Asymmetric Design Element -->
+<div class="bg-primary-container/5 rounded-[24px] p-8 border-2 border-dashed border-primary-container/20 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-[48px] text-primary-container/40 mb-3">verified_user</span>
+<p class="text-body-lg font-body-lg text-on-surface-variant">Queue status looks manageable.<br/>8 workers waiting for validation.</p>
+<button class="mt-4 text-primary font-bold text-label-lg">Refresh Queue</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-surface-container-highest border-t border-outline-variant/30 flex justify-around items-center px-4 h-[72px] pb-safe shadow-[0_-4px_12px_rgba(0,0,0,0.12)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/20 rounded-full px-4 py-1 scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">work</span>
+<span class="text-label-sm font-label-sm">Jobs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-label-sm font-label-sm">Post</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-secondary-fixed-dim hover:bg-surface-variant/50 transition-all px-4 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.innerText === 'Approve') {
+                    const card = this.closest('.bg-surface');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => card.remove(), 300);
+                }
+            });
+        });
+    </script>
+</body></html>

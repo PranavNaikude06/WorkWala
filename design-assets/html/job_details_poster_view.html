@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Job Details - WorkWala</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c6c4df",
+                    "background": "#fafaf5",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-container": "#ff6b00",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e3de",
+                    "primary": "#a04100",
+                    "inverse-surface": "#2f312e",
+                    "surface-dim": "#dadad5",
+                    "inverse-primary": "#ffb693",
+                    "on-primary-container": "#572000",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface": "#1a1c19",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f4ef",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-bright": "#fafaf5",
+                    "secondary-container": "#e2e0fc",
+                    "on-secondary-container": "#63627a",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb693",
+                    "tertiary": "#006e2f",
+                    "on-background": "#1a1c19",
+                    "secondary": "#5d5c74",
+                    "surface-container-high": "#e8e8e3",
+                    "tertiary-container": "#00b050",
+                    "on-tertiary-container": "#003a15",
+                    "secondary-fixed": "#e2e0fc",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-surface-variant": "#5a4136",
+                    "surface-container": "#eeeee9",
+                    "on-primary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container-highest": "#e3e3de",
+                    "inverse-on-surface": "#f1f1ec",
+                    "outline": "#8e7164",
+                    "outline-variant": "#e2bfb0",
+                    "surface": "#fafaf5",
+                    "surface-tint": "#a04100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#45455b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "base-unit": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fafaf5;
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .elevation-1 {
+            box-shadow: 0 4px 12px rgba(0, 33, 9, 0.12);
+        }
+        .btn-active:active {
+            transform: scale(0.95);
+            filter: brightness(0.9);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen pb-[100px]">
+<!-- Top AppBar (Mobile Style as per Shared Components) -->
+<header class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container docked full-width top-0 shadow-md flex justify-between items-center w-full px-margin-mobile h-[64px] sticky z-50">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-primary active:scale-95 transition-transform" data-icon="arrow_back">arrow_back</button>
+<h1 class="text-headline-md font-headline-md font-bold">WorkWala</h1>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sharp, professional headshot of a middle-aged Indian construction supervisor wearing a clean white shirt and a bright yellow safety helmet. He has a friendly, authoritative expression. The background is a slightly blurred architectural office with warm lighting and a modern, high-contrast aesthetic consistent with a premium labor management application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJw6BnJdUPlHMxWkKZhmNIpyTiOHXoPu7VbimByVGXig603PqeEtyyOAfXv2BjIcvlN19y_kVIoL_WU__iM5L6rEqkaQ-_subYQfSBO3BDEn53qL0NhSb-dwCZTtZSDgfxcsGB3ZdkYgFL1LaJgkQ-FLnKilxpIlSdU2WMMxo-YvjXho_DIeGfzgpZHmvoWZTZbSoHw3Lft7VcDJWbBnI460KGkpsQA8qG-sIZa_pRTiWu_-7qBHEwmg"/>
+</div>
+</header>
+<main class="px-margin-mobile pt-stack-md space-y-stack-md">
+<!-- Job Banner & Stats -->
+<section class="bg-surface-container-lowest rounded-[24px] p-5 elevation-1 overflow-hidden relative">
+<!-- Animated Background Glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-container opacity-10 rounded-full blur-3xl"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="inline-flex items-center px-3 py-1 bg-tertiary-container text-on-tertiary-container text-label-sm font-label-sm rounded-full mb-2">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container mr-2 animate-pulse"></span>
+                        Open
+                    </span>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface">🧱 Mason</h2>
+</div>
+<div class="text-right">
+<p class="text-primary-container font-extrabold text-headline-md">₹800<span class="text-label-sm font-normal text-on-surface-variant">/day</span></p>
+<p class="text-label-sm text-on-surface-variant font-label-sm">Total Payout: ₹1,600</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-gutter py-4 border-y border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Needed</p>
+<p class="text-label-lg font-label-lg">2 Workers</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<p class="text-label-sm text-on-surface-variant">Duration</p>
+<p class="text-label-lg font-label-lg">Today, 8 AM</p>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="location_on">location_on</span>
+<p class="text-body-md text-on-surface-variant">Cyber Hub, Sector 24, Gurugram, Haryana</p>
+</div>
+</section>
+<!-- Interested Workers Section -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="text-headline-md font-headline-md text-on-surface">Interested Workers (3)</h3>
+<button class="text-primary font-label-lg text-label-lg">Select All</button>
+</div>
+<div class="space-y-gutter">
+<!-- Worker Card 1 -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 elevation-1 border-2 border-transparent transition-all duration-200 worker-card active-card" onclick="toggleSelection(this)">
+<div class="flex gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of Ramesh K., a skilled construction worker with 10 years of experience. He is wearing a clean orange high-visibility vest and looking confidently at the camera. The image is bright, professional, and clear, with a warm neutral background that matches the earthy tones of the WorkWala design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0Sn7O02DKkjkt0ZrCUvVStwtO8JIKdGcUaGiVmkQZKp4A_DkGSJlqYnpmgoKE28nVChnqxY4tf-AI_UcHKlQ5knl_nRL4_aTxiY7XO4rsvx1CumONByEAUIkY_9c4FqbAdM3DgcnUpEpgYIGlk_nkf7MKday66CCLRBOU4aX8u_AdHfvJ9hmgxqbPXPLp0CK1IOTHD8wibfzgdB8Rx-ZC38K5yPXxVO5_XFRwjNHX4oNxBDKffxoTZg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary-container text-on-tertiary-container rounded-full w-5 h-5 flex items-center justify-center border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[12px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface">Ramesh K.</h4>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[#FFB600] text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.5</span>
+<span class="text-label-sm text-on-surface-variant">(120 Reviews)</span>
+</div>
+</div>
+<button class="h-10 px-4 bg-primary-container text-on-primary rounded-full text-label-sm font-label-sm btn-active shadow-sm" onclick="event.stopPropagation()">View</button>
+</div>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Brickwork</span>
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Plastering</span>
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Tiling</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Worker Card 2 -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 elevation-1 border-2 border-transparent transition-all duration-200 worker-card active-card" onclick="toggleSelection(this)">
+<div class="flex gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-primary-container">
+<img class="w-full h-full object-cover" data-alt="A portrait of Suresh M., a smiling blue-collar worker in his 30s. He has a friendly face and is wearing a dark blue polo shirt. The lighting is soft and natural, emphasizing a trustworthy and reliable persona. The aesthetic is clean and modern, set against a blurred outdoor site background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLhSztvCx_DtAIDHwNyiq8maK3fC-hBvNUImYIW9I6Q8WPckjTy1xExADHNp21Y9Ge6vl_1poJ2pOH_WWK7z0dX_jeAa6MpZMxZQX6oGHiEFX8NsdXVyVJ7cZ_wImNxh0DDuWlDUgIzyER-UjlUHrJ7k7Rct0fycnxiIu4V4BAVSVpDa1p1d0HPwJMC6ZLa3uBmuHg9IgTah2svhvMSy2OXUqJupmWEKUbBQHrT5Wu9Pq_ndUUFA6Grg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-tertiary-container text-on-tertiary-container rounded-full w-5 h-5 flex items-center justify-center border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[12px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface">Suresh M.</h4>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[#FFB600] text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.2</span>
+<span class="text-label-sm text-on-surface-variant">(85 Reviews)</span>
+</div>
+</div>
+<button class="h-10 px-4 bg-primary-container text-on-primary rounded-full text-label-sm font-label-sm btn-active shadow-sm" onclick="event.stopPropagation()">View</button>
+</div>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Flooring</span>
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Stone Cutting</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Worker Card 3 (Unselected) -->
+<div class="bg-surface-container-lowest rounded-[24px] p-4 elevation-1 border-2 border-transparent transition-all duration-200 worker-card" onclick="toggleSelection(this)">
+<div class="flex gap-4">
+<div class="relative">
+<div class="w-14 h-14 rounded-full overflow-hidden border-2 border-outline-variant/30 grayscale">
+<img class="w-full h-full object-cover" data-alt="A portrait of Vikram S., a young and athletic worker wearing a grey workshop apron over a t-shirt. He looks focused and professional. The image has a slightly cooler tone with bright daylight. High quality photography with sharp details and a clean studio-style background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW3p0kHfw8swUGREBLKq09cD9llHmQa9xaUbHo5oqzidM7MRzXY27oSmZcMpGnkPvnGnmscMiSzdAoheesuSWBsz8_btJQ88GO9ghPBvQ6JZmjNSDz0AtwWrjIosUy-kmFH0mvtmgCJSc2z2TBUaWJZ0oryqVcooitmf4vzV30jWT8SzgJvC91GkSu7RIdHUgj06ks9L9MtVj0o1xWhfvsI3DI8DRCQ5_tscfbLlaFKelXsXCRK7zr0Q"/>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface">Vikram S.</h4>
+<div class="flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[#FFB600] text-[16px]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-sm font-label-sm text-on-surface">4.8</span>
+<span class="text-label-sm text-on-surface-variant">(45 Reviews)</span>
+</div>
+</div>
+<button class="h-10 px-4 bg-primary-container text-on-primary rounded-full text-label-sm font-label-sm btn-active shadow-sm" onclick="event.stopPropagation()">View</button>
+</div>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Concrete</span>
+<span class="px-2 py-1 bg-surface-container text-on-surface-variant rounded-lg text-[11px] font-medium border border-outline-variant/20">Fine Finish</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Contextual Hiring Action) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest p-margin-mobile border-t border-outline-variant/30 flex items-center justify-between z-50">
+<div class="flex flex-col">
+<p class="text-label-sm text-on-surface-variant">2 Selected</p>
+<p class="text-label-lg font-bold text-on-surface">Total: ₹1,600</p>
+</div>
+<button class="h-touch-target-min px-10 bg-primary-container text-on-primary rounded-2xl text-body-lg font-bold btn-active shadow-lg flex items-center gap-2" id="hireButton">
+            Hire Selected (2)
+            <span class="material-symbols-outlined" data-icon="trending_flat">trending_flat</span>
+</button>
+</div>
+<!-- Navigation Suppressed for Transactional Detail View -->
+<script>
+        function toggleSelection(card) {
+            card.classList.toggle('active-card');
+            card.classList.toggle('border-primary-container');
+            
+            const avatar = card.querySelector('.w-14');
+            avatar.classList.toggle('grayscale');
+            avatar.classList.toggle('border-primary-container');
+            avatar.classList.toggle('border-outline-variant/30');
+
+            // Find or create checkmark
+            let checkBadge = card.querySelector('.absolute.-bottom-1');
+            if (card.classList.contains('active-card')) {
+                if (!checkBadge) {
+                    const badge = document.createElement('div');
+                    badge.className = "absolute -bottom-1 -right-1 bg-tertiary-container text-on-tertiary-container rounded-full w-5 h-5 flex items-center justify-center border-2 border-surface-container-lowest";
+                    badge.innerHTML = '<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: \'FILL\' 1;">check</span>';
+                    card.querySelector('.relative').appendChild(badge);
+                }
+            } else {
+                if (checkBadge) checkBadge.remove();
+            }
+
+            updateCount();
+        }
+
+        function updateCount() {
+            const selectedCount = document.querySelectorAll('.active-card').length;
+            const hireBtn = document.getElementById('hireButton');
+            const countText = document.querySelector('.text-label-sm.text-on-surface-variant');
+            const totalText = document.querySelector('.text-label-lg.font-bold.text-on-surface');
+
+            countText.textContent = `${selectedCount} Selected`;
+            totalText.textContent = `Total: ₹${selectedCount * 800}`;
+            hireBtn.innerHTML = `Hire Selected (${selectedCount}) <span class="material-symbols-outlined">trending_flat</span>`;
+            
+            if(selectedCount === 0) {
+                hireBtn.classList.add('opacity-50', 'pointer-events-none');
+            } else {
+                hireBtn.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        // Initialize state
+        document.querySelectorAll('.active-card').forEach(card => {
+            card.classList.add('border-primary-container');
+        });
+    </script>
+</body></html>

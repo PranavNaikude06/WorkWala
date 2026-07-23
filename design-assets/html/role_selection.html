@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>WorkWala - Role Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Inline Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#c6c4df",
+                    "background": "#fafaf5",
+                    "on-tertiary-fixed": "#002109",
+                    "primary-container": "#ff6b00",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e3e3de",
+                    "primary": "#a04100",
+                    "inverse-surface": "#2f312e",
+                    "surface-dim": "#dadad5",
+                    "inverse-primary": "#ffb693",
+                    "on-primary-container": "#572000",
+                    "tertiary-fixed-dim": "#4ae176",
+                    "tertiary-fixed": "#6bff8f",
+                    "on-surface": "#1a1c19",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f4f4ef",
+                    "on-primary-fixed-variant": "#7a3000",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#ffdbcc",
+                    "surface-bright": "#fafaf5",
+                    "secondary-container": "#e2e0fc",
+                    "on-secondary-container": "#63627a",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#ffb693",
+                    "tertiary": "#006e2f",
+                    "on-background": "#1a1c19",
+                    "secondary": "#5d5c74",
+                    "surface-container-high": "#e8e8e3",
+                    "tertiary-container": "#00b050",
+                    "on-tertiary-container": "#003a15",
+                    "secondary-fixed": "#e2e0fc",
+                    "on-secondary-fixed": "#1a1a2e",
+                    "on-surface-variant": "#5a4136",
+                    "surface-container": "#eeeee9",
+                    "on-primary-fixed": "#351000",
+                    "on-tertiary-fixed-variant": "#005321",
+                    "surface-container-highest": "#e3e3de",
+                    "inverse-on-surface": "#f1f1ec",
+                    "outline": "#8e7164",
+                    "outline-variant": "#e2bfb0",
+                    "surface": "#fafaf5",
+                    "surface-tint": "#a04100",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#45455b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "stack-lg": "40px",
+                    "gutter": "16px",
+                    "touch-target-min": "56px",
+                    "base-unit": "8px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "12px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-lg": ["16px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["26px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf5; /* Background from config */
+            color: #1a1c19; /* On-background from config */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Slider Styling */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #ff6b00; /* primary-container */
+            cursor: pointer;
+            border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .selection-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .selection-card:active {
+            transform: scale(0.98);
+        }
+        .skill-chip.active {
+            background-color: #ff6b00;
+            color: #ffffff;
+            border-color: #ff6b00;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+<!-- Top App Bar (From Shared Components JSON) -->
+<header class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container shadow-md flex justify-between items-center w-full px-margin-mobile h-[64px] sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[24px]">menu</span>
+<h1 class="text-headline-md font-headline-md font-bold">WorkWala</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant border-2 border-on-primary/20">
+<img class="w-full h-full object-cover" data-alt="A high-quality professional portrait of a skilled worker, looking confidently at the camera. The background is a clean, softly lit workshop environment, suggesting expertise and reliability. The lighting is warm and cinematic, emphasizing a modern light-mode brand aesthetic with vibrant energy and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzkEacJidHzCFS-Zwk74q7Z5w08wxMw3rGgKHh-S4ctQy5t98G8QxqkYXmckOXYpD34VOQ5yx6fLiYZlA3vUzEEGZDVLd-YHy2oU0c6N7hsOU-1QCeFYnNx9R7FXViKwSAt5Kvv0TjOz23QcAXXqLWMnJxzszbmWvxtfTV5yOkuBwU9za9aVI7OkgIW3wg-mTg6PRD4Qbzlwmrqk_xBcK1b8ejcV5ZjAWuLekJrMLA7Hf0iry-0_u5tQ"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile pt-stack-md pb-stack-lg max-w-lg mx-auto w-full">
+<!-- Animated Background Decoration -->
+<div class="relative overflow-hidden mb-stack-md rounded-3xl h-1">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/20 via-primary-container to-primary-container/20 animate-[shimmer_2s_infinite]"></div>
+</div>
+<section>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-stack-sm tracking-tight">
+                How do you want to use WorkWala?
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-stack-md opacity-80">
+                Choose your primary role to get started with the best experience.
+            </p>
+</section>
+<!-- Role Selection Cards -->
+<div class="grid grid-cols-1 gap-gutter mb-stack-md">
+<!-- Employer Card -->
+<button class="selection-card bg-surface-container-lowest border-2 border-outline-variant/30 rounded-[24px] p-5 flex items-center gap-4 text-left shadow-[0_4px_12px_rgba(26,28,25,0.06)] hover:shadow-lg focus:outline-none w-full" id="card-employer" onclick="selectRole('employer')">
+<div class="w-14 h-14 rounded-full bg-primary-fixed/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">work</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">I need to hire workers</h3>
+<p class="text-sm text-on-surface-variant">Post a Job &amp; Find Talent</p>
+</div>
+<div class="ml-auto selection-indicator opacity-0 transition-opacity">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+</div>
+</button>
+<!-- Worker Card -->
+<button class="selection-card bg-surface-container-lowest border-2 border-outline-variant/30 rounded-[24px] p-5 flex items-center gap-4 text-left shadow-[0_4px_12px_rgba(26,28,25,0.06)] hover:shadow-lg focus:outline-none w-full" id="card-worker" onclick="selectRole('worker')">
+<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]">handyman</span>
+</div>
+<div>
+<h3 class="font-label-lg text-label-lg text-on-surface">I'm looking for work</h3>
+<p class="text-sm text-on-surface-variant">Browse Jobs &amp; Earn Money</p>
+</div>
+<div class="ml-auto selection-indicator opacity-0 transition-opacity">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+</div>
+</button>
+</div>
+<!-- Role Switch Disclaimer -->
+<div class="flex items-center justify-center gap-2 mb-stack-lg">
+<span class="material-symbols-outlined text-sm text-on-surface-variant/60">info</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant/80">You can switch roles later in settings</p>
+</div>
+<!-- Worker Specific Fields (Hidden by Default) -->
+<div class="space-y-stack-md hidden transform translate-y-4 opacity-0 transition-all duration-300 mb-stack-lg" id="worker-details">
+<!-- Skills Multi-select -->
+<div>
+<label class="font-label-lg text-label-lg block mb-stack-sm text-on-surface">Select your skills</label>
+<div class="flex flex-wrap gap-2">
+<button class="skill-chip px-4 py-2 border-2 border-outline-variant/50 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary-container/50 transition-colors" onclick="toggleSkill(this)">Laborer</button>
+<button class="skill-chip px-4 py-2 border-2 border-outline-variant/50 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary-container/50 transition-colors" onclick="toggleSkill(this)">Mason</button>
+<button class="skill-chip px-4 py-2 border-2 border-outline-variant/50 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary-container/50 transition-colors" onclick="toggleSkill(this)">Electrician</button>
+<button class="skill-chip px-4 py-2 border-2 border-outline-variant/50 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary-container/50 transition-colors" onclick="toggleSkill(this)">Plumber</button>
+<button class="skill-chip px-4 py-2 border-2 border-outline-variant/50 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary-container/50 transition-colors" onclick="toggleSkill(this)">Painter</button>
+<button class="skill-chip px-4 py-2 border-2 border-outline-variant/50 rounded-full font-label-sm text-label-sm text-on-surface-variant hover:border-primary-container/50 transition-colors" onclick="toggleSkill(this)">Carpenter</button>
+</div>
+</div>
+<!-- Radius Slider -->
+<div>
+<div class="flex justify-between items-center mb-stack-sm">
+<label class="font-label-lg text-label-lg text-on-surface">Search Radius</label>
+<span class="font-label-lg text-primary-container" id="radius-val">12 km</span>
+</div>
+<input class="w-full h-2 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary-container" max="25" min="1" oninput="updateRadius(this.value)" type="range" value="12"/>
+<div class="flex justify-between mt-1 text-[10px] text-on-surface-variant/50 uppercase font-bold tracking-widest">
+<span>1 KM</span>
+<span>25 KM</span>
+</div>
+</div>
+<!-- ID Upload Box -->
+<div>
+<label class="font-label-lg text-label-lg block mb-stack-sm text-on-surface">Verify Identity</label>
+<div class="border-2 border-dashed border-outline-variant/50 rounded-[24px] p-6 bg-surface-container flex flex-col items-center justify-center text-center cursor-pointer hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary-container text-2xl">cloud_upload</span>
+</div>
+<p class="font-label-lg text-label-lg text-on-surface">Upload Gov ID</p>
+<p class="text-xs text-on-surface-variant mt-1">Aadhar, Voter ID or DL (JPG/PDF)</p>
+</div>
+</div>
+</div>
+<!-- Sticky Footer for Primary Action -->
+<div class="mt-auto pt-stack-md">
+<button class="w-full h-[56px] bg-primary-container text-on-primary rounded-full font-label-lg text-label-lg shadow-md hover:bg-primary transition-all active:scale-95 flex items-center justify-center gap-2">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Suppressed as per Transactional Screen logic) -->
+<script>
+        function selectRole(role) {
+            const employerCard = document.getElementById('card-employer');
+            const workerCard = document.getElementById('card-worker');
+            const workerDetails = document.getElementById('worker-details');
+
+            // Reset cards
+            [employerCard, workerCard].forEach(card => {
+                card.classList.remove('border-primary-container', 'bg-primary-container/5', 'shadow-primary-container/10');
+                card.querySelector('.selection-indicator').classList.add('opacity-0');
+            });
+
+            // Select active card
+            const activeCard = document.getElementById(`card-${role}`);
+            activeCard.classList.add('border-primary-container', 'bg-primary-container/5', 'shadow-primary-container/10');
+            activeCard.querySelector('.selection-indicator').classList.remove('opacity-0');
+
+            // Toggle secondary fields
+            if (role === 'worker') {
+                workerDetails.classList.remove('hidden');
+                setTimeout(() => {
+                    workerDetails.classList.remove('translate-y-4', 'opacity-0');
+                }, 10);
+            } else {
+                workerDetails.classList.add('translate-y-4', 'opacity-0');
+                setTimeout(() => {
+                    workerDetails.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function toggleSkill(chip) {
+            chip.classList.toggle('active');
+            chip.classList.toggle('bg-primary-container');
+            chip.classList.toggle('text-white');
+            chip.classList.toggle('border-primary-container');
+        }
+
+        function updateRadius(val) {
+            document.getElementById('radius-val').innerText = `${val} km`;
+        }
+
+        // Shimmer animation keyframes added via style tag if not present in tailwind
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shimmer {
+                0% { transform: translateX(-100%); }
+                100% { transform: translateX(100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>
