@@ -1,11 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import TopBar from "@/components/layout/TopBar";
 import Button from "@/components/ui/Button";
 
-export default function PostJobStep2Page() {
+function Step2Form() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const category = searchParams.get("category") || "mason";
@@ -162,5 +162,13 @@ export default function PostJobStep2Page() {
         </form>
       </main>
     </div>
+  );
+}
+
+export default function PostJobStep2Page() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-slate-500">Loading form...</div>}>
+      <Step2Form />
+    </Suspense>
   );
 }

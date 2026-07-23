@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import TopBar from "@/components/layout/TopBar";
@@ -8,7 +8,7 @@ import BottomNav from "@/components/layout/BottomNav";
 import { MOCK_JOBS } from "@/data/jobs";
 import { formatCurrency } from "@/lib/utils";
 
-export default function FindWorkPage() {
+function FindWorkContent() {
   const searchParams = useSearchParams();
   const initialCat = searchParams.get("category") || "all";
 
@@ -181,5 +181,13 @@ export default function FindWorkPage() {
 
       <BottomNav />
     </div>
+  );
+}
+
+export default function FindWorkPage() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-slate-500">Loading jobs...</div>}>
+      <FindWorkContent />
+    </Suspense>
   );
 }

@@ -1,4 +1,5 @@
 import "./globals.css";
+import ClientLayoutWrapper from "@/components/layout/ClientLayoutWrapper";
 
 export const metadata = {
   title: "WorkWala — Work For Everyone. Jobs For Everyone.",
@@ -19,11 +20,14 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-full flex flex-col bg-[#fafaf5] text-[#1a1c19]">
-        <main className="flex-1 w-full max-w-md mx-auto relative bg-[#fafaf5] shadow-xl min-h-screen overflow-x-hidden">
-          {children}
-        </main>
+        <ClientLayoutWrapper>
+          <main className="flex-1 w-full max-w-md mx-auto relative bg-[#fafaf5] shadow-xl min-h-screen overflow-x-hidden">
+            {children}
+          </main>
+        </ClientLayoutWrapper>
       </body>
     </html>
   );
 }
+
 

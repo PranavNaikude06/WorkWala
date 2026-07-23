@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import TopBar from "@/components/layout/TopBar";
 import Button from "@/components/ui/Button";
 import { formatCurrency } from "@/lib/utils";
 
-export default function PostJobStep3Page() {
+function Step3Review() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -151,5 +151,13 @@ export default function PostJobStep3Page() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function PostJobStep3Page() {
+  return (
+    <Suspense fallback={<div className="p-8 text-center text-slate-500">Loading summary...</div>}>
+      <Step3Review />
+    </Suspense>
   );
 }
