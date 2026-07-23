@@ -46,4 +46,9 @@ design-assets/screens/
 # documentation (keep local)
 documentation/
 
+# LLM agent instruction files
+AGENTS.md
+CLAUDE.md
+
+
 
